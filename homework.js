@@ -1,22 +1,12 @@
 'use strict'
 
 function BinarioADecimal(num) {
+let sumatoria = 0;
 
-    let array = num.toString().split("").reverse();
-    let arrayDecimal = [];
-    let index = 0;
-    let decimal = 0;
-  
-    array.forEach((n) => {
-      arrayDecimal.push(n * Math.pow(2, index));
-      index++; 
-    });
-  
-    arrayDecimal.forEach((n) => {
-      decimal += n;
-    });
-  
-    return decimal;
+for (let i = 0; i < num.length; i++) {
+  sumatoria = sumatoria + num[i] * 2 ** (num.length -1 -i)  
+}
+return sumatoria;
   }
 
 
