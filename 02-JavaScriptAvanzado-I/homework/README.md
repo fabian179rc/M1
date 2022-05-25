@@ -9,7 +9,7 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 
 ```javascript
 x = 1;
-var a = 5;
+var a = 5;//
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
