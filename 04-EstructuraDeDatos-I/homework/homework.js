@@ -42,19 +42,21 @@ Pueden utilizar class o función constructora.
 
 function Queue() {
   
-  this.arr = [];
+  this.arr = []; //se declara un array para almacenar los objetos entrantes
 }
 
-Queue.prototype.enqueue = function (n) {
-    this.arr.push(n)
+//declaramos los metodos en el prototipo.
+
+Queue.prototype.enqueue = function (n) { //se declara una funcion con push que mete elementos(por lo que se coloca "n" ya que NECESITA un elemento)
+    this.arr.push(n)  //al pushear no necesita retornar nada
 }
 
-Queue.prototype.dequeue = function(){
-    return this.arr.shift();
+Queue.prototype.dequeue = function(){ //con shift se resta el primer valor metido.
+    return this.arr.shift(); //se retorna el valor
 }
 
-Queue.prototype.size = function(){
-  return this.arr.length;
+Queue.prototype.size = function(){ //tira el largo del array, osea las posiciones que hay.
+  return this.arr.length;  //se retorna el valor
 }
 
   
