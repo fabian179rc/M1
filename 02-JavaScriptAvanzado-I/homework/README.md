@@ -9,24 +9,24 @@ Determiná que será impreso en la consola, sin ejecutar el código.
 
 ```javascript
 x = 1;
-var a = 5;//
+var a = 5;
 var b = 10;
 var c = function(a, b, c) {
   var x = 10;
-  console.log(x);
-  console.log(a);
+  console.log(x); //10
+  console.log(a); //8
   var f = function(a, b, c) {
     b = a;
-    console.log(b);
+    console.log(b); //8
     b = c;
     var x = 5;
   }
   f(a,b,c);
-  console.log(b);
+  console.log(b); //9
 }
 c(8,9,10);
-console.log(b);
-console.log(x);
+console.log(b);//10
+console.log(x);//1
 ```
 
 ```javascript
@@ -43,19 +43,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); //franco
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); //tony
 (function() {
    if(true) {
       var instructor = "Franco";
       console.log(instructor);
    }
-})();
-console.log(instructor);
+})(); //franco
+console.log(instructor); //tony
 ```
 
 ```javascript
@@ -64,46 +64,47 @@ let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
     let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    console.log(instructor); //"The Flash"
+    console.log(pm); //"Reverse Flash"
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); //"The Flash"
+console.log(pm); //franco
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3"  //2
+"2" * "3"  //6
+4 + 5 + "px"  //9px
+"$" + 4 + 5 //$45
+"4" - 2 //2
+"4px" - 2 //Nan
+7 / 0 //infinity
+{}[0] //undefined dentro de un console.log
+parseInt("09") //9  pasa a enteros
+5 && 2 //da el ultimo valor != 0 ... osea 2.
+2 && 5 //da el ultimo valor != 0 ... osea 5.
+5 || 0 //devuelte el 5 por ser true
+0 || 5 //devuelte el 5 por ser true
+[3]+[3]-[10] // => "3" + "3" -[10] = 33 - [10]= 33 - 10 = 23  No se puede sumar arrays, entonces se concatenan los valores(33), 
+//luego al 33 le resta el array, este array[10] lo pasa a numero y se lo resta al 33.
+3>2>1 //(3>2) es true   || true>1 es false.
+[] == ![] // true ???
+
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
 
 
 ### Hoisting
-
 ¿Cuál es el output o salida en consola luego de ejecutar este código? Explicar por qué:
 
 ```javascript
 function test() {
-   console.log(a);
-   console.log(foo());
+   console.log(a); //da undefined porque aun no se definio el valor de a
+   console.log(foo()); // retorta 2 porque la funcion se define antes de ejecutar lineas de codigo.
 
    var a = 1;
    function foo() {
@@ -127,7 +128,7 @@ function getFood(food) {
     return snack;
 }
 
-getFood(false);
+getFood(false); //no devuelve nada??
 ```
 
 
@@ -147,11 +148,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); //Aurelio De Rosa
 
 var test = obj.prop.getFullname;
 
-console.log(test());
+console.log(test()); //undefined porque??
 ```
 
 ### Event loop
@@ -166,5 +167,5 @@ function printing() {
    console.log(4);
 }
 
-printing();
+printing();//1-4-3-2  primero guarda las funciones, ejecuta los console.log y luego los settimeout
 ```
