@@ -47,20 +47,20 @@ function cacheFunction(cb) {
   ado y lo retornará
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) 
   y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) 
-// ARG = 5, 10, 15
   */
- let resultado ={};
+  let resultado ={};
 
  return function(arg){
 
-  if(!resultado.hasOwnProperty(arg)){
-  resultado[arg] = cb(arg);
-  return resultado[arg];
+  if(!resultado.hasOwnProperty(arg)){  //preguntas si no esta la propiedad en el objeto
+  resultado[arg] = cb(arg); // si no esta, la agrega.
+  return resultado[arg]; //retorna lo que se guardo para no volver a llamar a cb
   }else{
-  return resultado[arg];
+  return resultado[arg]; // si lo encuentra en el objeto, lo devuelve.
   }
   }
 }
+
 
 // Bind
 
